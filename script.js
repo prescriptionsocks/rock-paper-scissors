@@ -37,29 +37,67 @@ btnWrapper.appendChild(scissorsBtn);
 scissorsBtn.setAttribute('style', 'padding: 8px 16px; margin-right:16px');
 
 //computer choices ui
-const computerChoiceWrapper = document.createElement('div');
-computerChoiceWrapper.textContent="temporary text";
-computerChoiceWrapper.setAttribute('style','display:flex; flex-direction:row; gap:16px;')
-bodyElement.appendChild(computerChoiceWrapper);
-const computerChoiceValue = document.createElement('p');
-computerChoiceValue.textContent='value';
-computerChoiceWrapper.appendChild(computerChoiceValue);
-
-//round results wrapper
-const resultsWrapper = document.createElement('div');
+const resultWrapper = document.createElement('div');
+resultWrapper.setAttribute('id', 'resultWrapper')
+resultWrapper.setAttribute('style','display:flex; flex-direction:row; gap:16px;')
+bodyElement.appendChild(resultWrapper);
 
 //play one round
-const playRound = function (){
-  //pick computer choice
-  const getComputerChoice = ()=>{
-    const choices = ["rock", "paper", "scissors"];
-    const computerChoice = math.floor(math)
+function playRound (playerChoice){
+
+  let playerScore = 0;
+  let computerScore =0;
+
+console.log(playerChoice);
+    //pick computer choice
+    function getComputerChoice () {
+        const choices = ["rock", "paper", "scissors"];
+        const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+        return(computerChoice);
+    };
+    const computerChoice = getComputerChoice();
+    console.log(computerChoice);
+    console.log(typeof computerChoice);
+
+    //return winner
+    if(playerChoice === computerChoice) {
+      const tieResult = document.createElement('p');
+      tieResult.textContent = "It's a tie :P";
+      resultWrapper.appendChild(tieResult);
+      console.log("its a tie");
+      return playerScore;
+    } 
+    
+    if ((playerChoice == "paper" && computerChoice == "rock") ||
+        (playerChoice == "rock" && computerChoice == "scissors") ||
+        (playerChoice == "scissors" && computerChoice == "paper")) {
+            const playerWon = document.createElement('p');
+            playerWon.textContent = "You won :D"
+            resultWrapper.appendChild(playerWon);
+            console.log("you won");
+            console.log(playerScore =+1);
+            return playerScore =+1;
+               }
+               
+    else {
+      const computerWon = document.createElement('p');
+            computerWon.textContent = "You lost to a pc :/"
+            resultWrapper.appendChild(computerWon);
+            console.log('you lost')
+            console.log(computerScore =+1);
+            return computerScore =+1;
+
+    };
+
+    
+  
   }
-  //pick player's choice
-  //validate player's choice
+  
   //return winner
 
-}
+//const playerChoice = paper;
+playRound("paper");
+
 
 
 
