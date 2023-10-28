@@ -42,11 +42,13 @@ resultWrapper.setAttribute('id', 'resultWrapper')
 resultWrapper.setAttribute('style','display:flex; flex-direction:row; gap:16px;')
 bodyElement.appendChild(resultWrapper);
 
+let playerScore = 0;
+  let computerScore = 0;
+
 //play one round
 function playRound (playerChoice){
 
-  let playerScore = 0;
-  let computerScore =0;
+  
 
 console.log(playerChoice);
     //pick computer choice
@@ -74,7 +76,7 @@ console.log(playerChoice);
             const playerWon = document.createElement('p');
             playerWon.textContent = "You won :D"
             resultWrapper.appendChild(playerWon);
-            console.log("you won");
+            console.log("you won :D");
             console.log(playerScore =+1);
             return playerScore =+1;
                }
@@ -89,14 +91,33 @@ console.log(playerChoice);
 
     };
 
+
     
   
   }
   
-  //return winner
-
 //const playerChoice = paper;
 playRound("paper");
+
+  //return winner
+  if (computerScore > 0 || playerScore > 0) {
+    console.log("here");
+    if(playerScore > computerScore) {
+      const winner = document.createElement('p');
+            winner.textContent = "You won the game :D"
+            resultWrapper.appendChild(winner);
+            console.log("you woooooooon");
+            //return playerScore =-1;
+            //return computerScore =-1;
+    } else {
+      const loser = document.createElement('p');
+            loser.textContent = "You lost the game :("
+            resultWrapper.appendChild(loser);
+            console.log("you looooost");
+            //return playerScore =-1;
+            //return computerScore =-1;
+    }
+  }
 
 
 
