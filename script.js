@@ -1,8 +1,69 @@
-
+/*
 let computerChoice;
 let playerChoice;
-let tallyCount;
+let tallyCount; */
 
+//remove all padding and margind
+const allElements  = document.querySelectorAll('*');
+allElements.forEach(element => element.setAttribute('style','margin:60px; padding:0px;'));
+
+//generate player ui
+const bodyElement = document.querySelector('body');
+const btnWrapper = document.createElement('div');
+btnWrapper.setAttribute('id', 'btn-wrapper');
+bodyElement.appendChild(btnWrapper);
+bodyElement.setAttribute('style', 'display:flex; flex-direction:column; gap:16px; justify-content:center; align-items: center; width:100%; height:100vh')
+
+//gnerate buttons
+const rockBtn = document.createElement('button');
+rockBtn.setAttribute('id', 'rock-btn');
+rockBtn.setAttribute('value', 'rock');
+rockBtn.textContent ='Rock';
+btnWrapper.appendChild(rockBtn);
+rockBtn.setAttribute('style', 'padding: 8px 16px; margin-right:16px');
+
+const paperBtn = document.createElement('button');
+paperBtn.setAttribute('id', 'paper-btn')
+paperBtn.setAttribute('value', 'paper');
+paperBtn.textContent ='Paper';
+btnWrapper.appendChild(paperBtn);
+paperBtn.setAttribute('style', 'padding: 8px 16px; margin-right:16px');
+
+const scissorsBtn = document.createElement('button');
+scissorsBtn.setAttribute('id', 'scissors-btn')
+scissorsBtn.setAttribute('value', 'scissors');
+scissorsBtn.textContent ='Scissors';
+btnWrapper.appendChild(scissorsBtn);
+scissorsBtn.setAttribute('style', 'padding: 8px 16px; margin-right:16px');
+
+//computer choices ui
+const computerChoiceWrapper = document.createElement('div');
+computerChoiceWrapper.textContent="temporary text";
+computerChoiceWrapper.setAttribute('style','display:flex; flex-direction:row; gap:16px;')
+bodyElement.appendChild(computerChoiceWrapper);
+const computerChoiceValue = document.createElement('p');
+computerChoiceValue.textContent='value';
+computerChoiceWrapper.appendChild(computerChoiceValue);
+
+//round results wrapper
+const resultsWrapper = document.createElement('div');
+
+//play one round
+const playRound = function (){
+  //pick computer choice
+  const getComputerChoice = ()=>{
+    const choices = ["rock", "paper", "scissors"];
+    const computerChoice = math.floor(math)
+  }
+  //pick player's choice
+  //validate player's choice
+  //return winner
+
+}
+
+
+
+/*
 // One round
 function playRound() {
   // Function lets computer pick random choice
@@ -80,5 +141,5 @@ function game() {
 
 game();
 
-
+*/
  
