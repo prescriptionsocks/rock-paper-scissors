@@ -5,7 +5,10 @@ let tallyCount; */
 
 //remove all padding and margind
 const allElements  = document.querySelectorAll('*');
-allElements.forEach(element => element.setAttribute('style','margin:60px; padding:0px;'));
+allElements.forEach(element => element.setAttribute('style','margin:0px; padding:0px;'));
+
+const allParagraphs  = document.querySelectorAll('p');
+allParagraphs.forEach(element => element.setAttribute('style','margin:0px; padding:0px;'));
 
 //generate player ui
 const bodyElement = document.querySelector('body');
@@ -39,16 +42,14 @@ scissorsBtn.setAttribute('style', 'padding: 8px 16px; margin-right:16px');
 //computer choices ui
 const resultWrapper = document.createElement('div');
 resultWrapper.setAttribute('id', 'resultWrapper')
-resultWrapper.setAttribute('style','display:flex; flex-direction:row; gap:16px;')
+resultWrapper.setAttribute('style','display:flex; flex-direction:column; gap:16px; text-align:center;')
 bodyElement.appendChild(resultWrapper);
 
 let playerScore = 0;
-  let computerScore = 0;
+let computerScore = 0;
 
 //play one round
-function playRound (playerChoice){
-
-  
+function playRound (playerChoice){ 
 
 console.log(playerChoice);
     //pick computer choice
@@ -61,14 +62,19 @@ console.log(playerChoice);
     console.log(computerChoice);
     console.log(typeof computerChoice);
 
-    //return winner
+    //return round winner
     if(playerChoice === computerChoice) {
       const tieResult = document.createElement('p');
       tieResult.textContent = "It's a tie :P";
       resultWrapper.appendChild(tieResult);
       console.log("its a tie");
-      return playerScore;
+      console.log(playerScore);
+      console.log(computerScore);
+      //checkWinner();
+      playerScore;
     } 
+
+    
     
     if ((playerChoice == "paper" && computerChoice == "rock") ||
         (playerChoice == "rock" && computerChoice == "scissors") ||
@@ -77,8 +83,9 @@ console.log(playerChoice);
             playerWon.textContent = "You won :D"
             resultWrapper.appendChild(playerWon);
             console.log("you won :D");
-            console.log(playerScore =+1);
-            return playerScore =+1;
+            console.log(playerScore +=1);
+            //checkWinner();
+            playerScore +=1;
                }
                
     else {
@@ -86,22 +93,22 @@ console.log(playerChoice);
             computerWon.textContent = "You lost to a pc :/"
             resultWrapper.appendChild(computerWon);
             console.log('you lost')
-            console.log(computerScore =+1);
-            return computerScore =+1;
+            console.log(computerScore +=1);
+            //checkWinner();            
+            computerScore +=1;
 
-    };
-
-
+    };  
+    checkWinner();  
     
-  
   }
   
-//const playerChoice = paper;
-playRound("paper");
+//picking player choice;
+rockBtn.addEventListener('click', () => playRound("rock"));
+paperBtn.addEventListener('click', () => playRound("paper"));
+scissorsBtn.addEventListener('click', () => playRound("scissors"));
 
-  //return winner
-  if (computerScore > 0 || playerScore > 0) {
-    console.log("here");
+  //return overall winner
+  function checkWinner () {if (computerScore === 3 || playerScore === 3) {
     if(playerScore > computerScore) {
       const winner = document.createElement('p');
             winner.textContent = "You won the game :D"
@@ -119,86 +126,4 @@ playRound("paper");
     }
   }
 
-
-
-
-/*
-// One round
-function playRound() {
-  // Function lets computer pick random choice
-  function getComputerChoice() {
-    let choices = ["Rock", "Paper", "Scissors"];
-    return choices[Math.floor(Math.random() * choices.length)];
-  }
-
-  let computerChoice = getComputerChoice();
-
-  // Get the player's choice
-  function getPlayerChoice() {
-    return prompt("Pick either Rock, Paper, or Scissors").toLowerCase();
-  }
-
-  let playerChoice = getPlayerChoice();
-
- //validate the player's choice
-  while (
-    playerChoice != "rock" &&
-    playerChoice != "paper" &&
-    playerChoice != "scissors"
-  ) {
-    alert("Invalid choice, try again");
-    playerChoice = getPlayerChoice();
-  }
-
-
-//Return results of a single round
-    if (playerChoice == computerChoice) {
-    alert("It's a tie :P");
-    return "tie";
-  } else if (
-    (playerChoice == "paper" && computerChoice == "rock") ||
-    (playerChoice == "rock" && computerChoice == "scissors") ||
-    (playerChoice == "scissors" && computerChoice == "paper")
-  ) {
-    alert("You won :D");
-    return "win";
-  } else {
-    alert("You lost...to a computer :/");
-    return "loss";
-  }
 }
-
-//Function loops the game 5 times
-function game() {
-  //   
-  let tallyCount = 0;
-  for (let i = 0; i < 5; i++) {
-    let score = playRound();
-    console.log(score);
-    
-
-
-    // tallyCount keeps track of wins,losses and draws 
-    if (score == "win") {
-      tallyCount++;
-    } else if (score == "loss") {
-      tallyCount--;
-    }
-  }
-
-  console.log(tallyCount);
-
-  // Use total tally count to return overall winner
-  if (tallyCount < 0) {
-    alert("You lost bruh");
-  } else if (tallyCount > 0) {
-    alert("You won!");
-  } else {
-    alert("It's a tie!");
-  }
-}
-
-game();
-
-*/
- 
